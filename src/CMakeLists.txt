@@ -166,6 +166,9 @@ ign_install_includes(
   "${IGN_INCLUDE_INSTALL_DIR_POSTFIX}/ignition/${IGN_DESIGNATION}"
   "${PROJECT_BINARY_DIR}/include/ignition/${IGN_DESIGNATION}/MessageTypes.hh")
 
+if (CMAKE_BUILD_TYPE_UPPERCASE STREQUAL "DEBUG")
+  add_compile_options(-bigobj)
+endif ()
 
 ##################################################
 # Build the main library
@@ -185,7 +188,7 @@ target_link_libraries(${PROJECT_LIBRARY_TARGET_NAME}
     protobuf::libprotobuf
     ${ignition-math${IGN_MATH_VER}_LIBRARIES}
   PRIVATE
-    TINYXML2::TINYXML2
+    tinyxml2::tinyxml2
 )
 
 target_include_directories(${PROJECT_LIBRARY_TARGET_NAME}
@@ -210,7 +213,7 @@ ign_build_tests(TYPE UNIT
   SOURCES
     ${gtest_sources}
   LIB_DEPS
-      TINYXML2::TINYXML2
+    tinyxml2::tinyxml2
 )
 
 ##################################################

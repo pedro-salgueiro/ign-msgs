@@ -75,7 +75,7 @@ ign_find_package(ignition-tools
 
 #--------------------------------------
 # Find Tinyxml2
-ign_find_package(TINYXML2 REQUIRED PRIVATE PRETTY tinyxml2)
+ign_find_package(TINYXML2 REQUIRED PRIVATE PRETTY tinyxml2 PKGCONFIG TINYXML2)
 
 #============================================================================
 # Configure the build
